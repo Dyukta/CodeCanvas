@@ -109,7 +109,7 @@ export default function PropertyPanel({ dark }: Props) {
         paddingBottom: 40,
       }}
     >
-      {/* Type badge */}
+
       <span
         style={{
           fontSize: 11,
@@ -124,7 +124,6 @@ export default function PropertyPanel({ dark }: Props) {
         {el.type}
       </span>
 
-      {/* Text field */}
       {['heading', 'text', 'button'].includes(el.type) && (
         <div>
           <Label>Text</Label>
@@ -136,7 +135,7 @@ export default function PropertyPanel({ dark }: Props) {
         </div>
       )}
 
-      {/* Heading level */}
+
       {el.type === 'heading' && (
         <div>
           <Label>Level</Label>
@@ -167,7 +166,6 @@ export default function PropertyPanel({ dark }: Props) {
         </div>
       )}
 
-      {/* Input */}
       {el.type === 'input' && (
         <div>
           <Label>Placeholder</Label>
@@ -179,7 +177,6 @@ export default function PropertyPanel({ dark }: Props) {
         </div>
       )}
 
-      {/* Image */}
       {el.type === 'image' && (
         <>
           <div>
@@ -202,7 +199,6 @@ export default function PropertyPanel({ dark }: Props) {
         </>
       )}
 
-      {/* Container */}
       {el.type === 'container' && (
         <div>
           <Label>Direction</Label>
@@ -233,7 +229,6 @@ export default function PropertyPanel({ dark }: Props) {
         </div>
       )}
 
-      {/* Class editor */}
       <hr style={{ borderTop: `1px solid ${inputBorder}` }} />
 
       <div>
@@ -249,7 +244,7 @@ export default function PropertyPanel({ dark }: Props) {
         </p>
       </div>
 
-      {/* Chips */}
+
       {Object.entries(SUGGESTIONS).map(([label, chips]) => (
         <div key={label}>
           <Label>{label}</Label>
@@ -279,7 +274,6 @@ export default function PropertyPanel({ dark }: Props) {
         </div>
       ))}
 
-      {/* Delete */}
       <hr style={{ borderTop: `1px solid ${inputBorder}` }} />
 
       <button
