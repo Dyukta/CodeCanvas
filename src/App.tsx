@@ -4,7 +4,7 @@ import Homepage from './pages/HomePage'
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/CodeCanvas">
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/builder" element={<BuilderPage />} />
