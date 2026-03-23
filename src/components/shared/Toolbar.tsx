@@ -78,7 +78,6 @@ export default function Toolbar({ dark }: Props) {
       flexShrink: 0,
     }}>
 
-      {/* Left: logo + undo/redo */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
         <a href="/" style={{ display: 'flex', alignItems: 'center', gap: 6, textDecoration: 'none' }}>
           <div style={{ width: 26, height: 26, borderRadius: 6, background: '#EEF2FF', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -99,7 +98,6 @@ export default function Toolbar({ dark }: Props) {
         </Btn>
       </div>
 
-      {/* Center: view mode */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 2, background: dark ? '#1E293B' : '#F3F4F6', borderRadius: 8, padding: 3 }}>
         {VIEW_MODES.map(({ mode, icon, label }) => {
           const active = viewMode === mode
@@ -125,7 +123,6 @@ export default function Toolbar({ dark }: Props) {
         })}
       </div>
 
-      {/* Right: preview + theme + clear */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
         {PREVIEW.map(({ size, icon }) => (
           <Btn

@@ -2,7 +2,6 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import type { UIElement, ViewMode, PreviewSize, ElementProps } from '../types'
 
-// ── tree helpers ──────────────────────────────────────────────────────────────
 
 function addToTree(tree: UIElement[], el: UIElement, parentId: string | null): UIElement[] {
   if (!parentId) return [...tree, el]
@@ -36,16 +35,13 @@ function findInTree(tree: UIElement[], id: string): UIElement | null {
   return null
 }
 
-// ── history helpers ───────────────────────────────────────────────────────────
 
 const MAX_HISTORY = 50
 
-// Push current tree onto a stack, cap at MAX_HISTORY
 function push(stack: UIElement[][], tree: UIElement[]): UIElement[][] {
   return [tree, ...stack].slice(0, MAX_HISTORY)
 }
 
-// Apply a tree mutation: saves current tree to past, clears future
 function commit(
   state: Store,
   nextTree: UIElement[],
@@ -59,7 +55,6 @@ function commit(
   }
 }
 
-// ── store interface ───────────────────────────────────────────────────────────
 
 interface Store {
   tree:        UIElement[]
@@ -83,7 +78,6 @@ interface Store {
   redo:          () => void
 }
 
-// ── store ─────────────────────────────────────────────────────────────────────
 
 export const useBuilderStore = create<Store>()(
   persist(
@@ -110,7 +104,7 @@ export const useBuilderStore = create<Store>()(
       clearCanvas: () =>
         set(s => commit(s, [], { selectedId: null })),
 
-      // ── undo/redo are symmetric ──────────────────────────────────────────
+
       undo: () => set(s => {
         if (!s.past.length) return s
         const [prev, ...rest] = s.past
