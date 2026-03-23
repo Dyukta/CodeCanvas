@@ -1,4 +1,3 @@
-// src/pages/BuilderPage.tsx
 import { useState, useCallback } from 'react'
 import {
   DndContext,
@@ -20,7 +19,7 @@ import PanelLayout from '../components/layout/PanelLayout'
 import type { UIElement } from '../types'
 
 export default function BuilderPage() {
-  // ✅ use selector (prevents unnecessary re-renders)
+
   const addElement = useBuilderStore(s => s.addElement)
   const dark = useBuilderStore(s => s.isDark)
 

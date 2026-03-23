@@ -40,7 +40,7 @@ export default function CodePanel() {
         overflow: 'hidden',
       }}
     >
-      {/* Header */}
+
       <div
         style={{
           display: 'flex',
@@ -82,7 +82,6 @@ export default function CodePanel() {
         </button>
       </div>
 
-      {/* Code */}
       <div style={{ flex: 1, overflow: 'auto' }}>
         <CodeBlock code={code} />
       </div>

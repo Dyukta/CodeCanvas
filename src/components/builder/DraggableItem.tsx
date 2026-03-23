@@ -1,13 +1,5 @@
 import { useDraggable } from '@dnd-kit/core'
-import {
-  Square,
-  Minus,
-  Heading,
-  AlignLeft,
-  MousePointerClick,
-  TextCursorInput,
-  Image as ImageIcon,
-} from 'lucide-react'
+import {Square,Minus,Heading,AlignLeft,MousePointerClick,TextCursorInput,Image as ImageIcon} from 'lucide-react'
 import type { ElementType } from '../../types'
 import type { ReactNode } from 'react'
 

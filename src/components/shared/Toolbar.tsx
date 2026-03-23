@@ -1,17 +1,4 @@
-import {
-  Monitor,
-  Tablet,
-  Smartphone,
-  Sun,
-  Moon,
-  Trash2,
-  Undo2,
-  Redo2,
-  Eye,
-  Columns2,
-  Code2,
-  LayoutGrid,
-} from 'lucide-react'
+import {Monitor, Tablet, Smartphone, Sun, Moon, Trash2, Undo2, Redo2, Eye, Columns2, Code2, LayoutGrid} from 'lucide-react'
 import { useBuilderStore } from '../../store/useBuilderStore'
 import type { ViewMode, PreviewSize } from '../../types'
 
@@ -80,7 +67,7 @@ export default function Toolbar({ dark }: Props) {
         background: bg,
       }}
     >
-      {/* left */}
+
       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
           <LayoutGrid size={14} color="#3B5BDB" />
@@ -97,7 +84,6 @@ export default function Toolbar({ dark }: Props) {
         </Btn>
       </div>
 
-      {/* center */}
       <div style={{ display: 'flex', gap: 4 }}>
         {VIEW_MODES.map(({ mode, icon }) => (
           <Btn
@@ -110,7 +96,6 @@ export default function Toolbar({ dark }: Props) {
         ))}
       </div>
 
-      {/* right */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
         {PREVIEW.map(({ size, icon }) => (
           <Btn

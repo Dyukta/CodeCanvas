@@ -2,7 +2,6 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import type { UIElement, ViewMode, PreviewSize, ElementProps } from '../types'
 
-// ── tree helpers ─────────────────────────────────────────
 
 function addToTree(tree: UIElement[], el: UIElement, parentId: string | null): UIElement[] {
   if (!parentId) return [...tree, el]
@@ -37,7 +36,6 @@ function findInTree(tree: UIElement[], id: string): UIElement | null {
   return null
 }
 
-// ── store ────────────────────────────────────────────────
 
 interface Store {
   tree: UIElement[]

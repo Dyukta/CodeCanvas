@@ -66,7 +66,6 @@ export default function PropertyPanel({ dark }: Props) {
         {el.type}
       </span>
 
-      {/* text */}
       {['heading', 'text', 'button'].includes(el.type) && (
         <div>
           <Label>Text</Label>
@@ -78,7 +77,7 @@ export default function PropertyPanel({ dark }: Props) {
         </div>
       )}
 
-      {/* class */}
+
       <div>
         <Label>ClassName</Label>
         <textarea
@@ -89,7 +88,7 @@ export default function PropertyPanel({ dark }: Props) {
         />
       </div>
 
-      {/* heading level */}
+
       {el.type === 'heading' && (
         <div>
           <Label>Level</Label>
@@ -101,7 +100,6 @@ export default function PropertyPanel({ dark }: Props) {
         </div>
       )}
 
-      {/* input */}
       {el.type === 'input' && (
         <div>
           <Label>Placeholder</Label>
@@ -113,7 +111,6 @@ export default function PropertyPanel({ dark }: Props) {
         </div>
       )}
 
-      {/* image */}
       {el.type === 'image' && (
         <>
           <div>
@@ -135,7 +132,6 @@ export default function PropertyPanel({ dark }: Props) {
         </>
       )}
 
-      {/* container */}
       {el.type === 'container' && (
         <div>
           <Label>Direction</Label>

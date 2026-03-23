@@ -19,17 +19,14 @@ export default function PanelLayout({ dark }: Props) {
   return (
     <div style={{ display: 'flex', flex: 1, overflow: 'hidden' }}>
 
-      {/* LEFT */}
       <ComponentPanel dark={dark} />
 
-      {/* CENTER */}
       {showCanvas && (
         <div style={{ flex: 1, display: 'flex', minWidth: 0 }}>
           <Canvas dark={dark} />
         </div>
       )}
 
-      {/* RIGHT */}
       {showCode && (
         <div
           style={{
@@ -66,8 +63,7 @@ export default function PanelLayout({ dark }: Props) {
           )}
         </div>
       )}
-
-      {/* VISUAL MODE ONLY */}
+      
       {viewMode === 'visual' && (
         <div
           style={{
