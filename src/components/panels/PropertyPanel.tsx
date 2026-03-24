@@ -1,6 +1,9 @@
 import { useMemo } from 'react'
 import { useBuilderStore } from '../../store/useBuilderStore'
 
+interface Props {
+  dark: boolean
+}
 
 type GroupMap = Record<string, string[]>
 
@@ -28,20 +31,32 @@ const ADDITIVE_GROUPS: GroupMap = {
 
 const ALL_GROUPS: GroupMap = { ...EXCLUSIVE_GROUPS, ...ADDITIVE_GROUPS }
 
-export default function PropertyPanel() {
+export default function PropertyPanel({ dark }: Props) {
   const el = useBuilderStore(s => s.getSelected())
   const update = useBuilderStore(s => s.updateElement)
   const remove = useBuilderStore(s => s.removeElement)
 
-  if (!el) return <div>Select element</div>
+  if (!el) {
+    return (
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100%',
+        fontSize: 13,
+        color: dark ? '#64748B' : '#9CA3AF'
+      }}>
+        Select an element
+      </div>
+    )
+  }
 
   const classList = useMemo<string[]>(
     () => (el.props.className ?? '').split(' ').filter(Boolean),
     [el.props.className]
   )
 
-  const hasClass = (cls: string): boolean =>
-    classList.includes(cls)
+  const hasClass = (cls: string) => classList.includes(cls)
 
   const toggleClass = (cls: string, group: string) => {
     const isExclusive = group in EXCLUSIVE_GROUPS
@@ -61,20 +76,107 @@ export default function PropertyPanel() {
     update(el.id, { className: next.join(' ') })
   }
 
+  const setProp = (key: string, value: string) => {
+    update(el.id, { [key]: value })
+  }
+
+  const textMut = dark ? '#64748B' : '#9CA3AF'
+  const textPri = dark ? '#F1F5F9' : '#111827'
+  const inputBg = dark ? '#1E293B' : '#F9FAFB'
+  const border  = dark ? '#334155' : '#E5E7EB'
+
+  const inputStyle: React.CSSProperties = {
+    width: '100%',
+    padding: '7px 10px',
+    fontSize: 13,
+    background: inputBg,
+    border: `1px solid ${border}`,
+    borderRadius: 6,
+    color: textPri,
+    outline: 'none',
+    fontFamily: 'Inter, sans-serif',
+  }
 
   return (
-    <div>
-      {Object.entries(ALL_GROUPS).map(([label, chips]) => (
-        <div key={label}>
-          {chips.map((chip: string) => (
-            <button key={chip} onClick={() => toggleClass(chip, label)}>
-              {chip}
-            </button>
-          ))}
-        </div>
-      ))}
+    <div style={{ padding: 16, display: 'flex', flexDirection: 'column', gap: 14 }}>
 
-      <button onClick={() => remove(el.id)}>Delete</button>
+      <span style={{
+        fontSize: 11,
+        fontWeight: 600,
+        color: textPri
+      }}>
+        {el.type}
+      </span>
+
+      {['heading','text','button'].includes(el.type) && (
+        <div>
+          <input
+            value={el.props.text ?? ''}
+            onChange={e => setProp('text', e.target.value)}
+            style={inputStyle}
+          />
+        </div>
+      )}
+
+      <div>
+        <textarea
+          value={el.props.className ?? ''}
+          onChange={e => setProp('className', e.target.value)}
+          rows={3}
+          style={inputStyle}
+        />
+      </div>
+
+      {Object.entries(ALL_GROUPS).map(([label, chips]) => {
+        const exclusive = label in EXCLUSIVE_GROUPS
+
+        return (
+          <div key={label}>
+            <div style={{ fontSize: 11, color: textMut, marginBottom: 4 }}>
+              {label} ({exclusive ? 'single' : 'multi'})
+            </div>
+
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5 }}>
+              {chips.map((chip: string) => {
+                const active = hasClass(chip)
+
+                return (
+                  <button
+                    key={chip}
+                    onClick={() => toggleClass(chip, label)}
+                    style={{
+                      padding: '3px 8px',
+                      fontSize: 11,
+                      borderRadius: 5,
+                      border: `1px solid ${active ? '#3B5BDB' : border}`,
+                      background: active ? '#EEF2FF' : inputBg,
+                      color: active ? '#3B5BDB' : textMut,
+                      fontWeight: active ? 600 : 400,
+                      cursor: 'pointer',
+                    }}
+                  >
+                    {chip}
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+        )
+      })}
+
+      <button
+        onClick={() => remove(el.id)}
+        style={{
+          color: '#EF4444',
+          background: 'none',
+          border: 'none',
+          cursor: 'pointer',
+          fontSize: 13,
+          textAlign: 'left'
+        }}
+      >
+        Delete Element
+      </button>
     </div>
   )
 }
