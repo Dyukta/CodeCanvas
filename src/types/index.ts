@@ -18,6 +18,7 @@ export interface ElementProps {
   alt?: string
   level?: 'h1' | 'h2' | 'h3' | 'h4'
   direction?: 'column' | 'row'
+  [key: string]: any
 }
 
 export interface UIElement {
