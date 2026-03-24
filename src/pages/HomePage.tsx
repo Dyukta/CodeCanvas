@@ -1,14 +1,10 @@
 import { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import {
-  MousePointerClick, Code2, Layers, Eye,
-  SlidersHorizontal, Monitor, Smartphone,
-  Tablet, LayoutGrid, Bell,
-} from 'lucide-react'
+import {MousePointerClick, Code2, Layers, Eye,SlidersHorizontal, Monitor, Smartphone,Tablet, LayoutGrid, Bell,} from 'lucide-react'
 import { useInView } from '../hooks/useInView'
 import BuilderPreview from '../components/BuilderPreview'
 
-// ── constants ──────────────────────────────────────────────────────────────
+
 const IC = '#4F6EF7'
 const IS = 1.8
 
@@ -34,7 +30,7 @@ const BUILT_FOR = [
   { Icon: () => <Tablet     size={28} color={IC} strokeWidth={1.6} />, title: 'Design Handoff',    desc: 'Bridge the gap between design mockups and code implementation.' },
 ]
 
-// ── component ──────────────────────────────────────────────────────────────
+
 export default function HomePage() {
   const navigate = useNavigate()
 
@@ -46,7 +42,6 @@ export default function HomePage() {
   const stepsIn = useInView(stepsRef)
   const builtIn = useInView(builtRef)
 
-  // ── shared tokens ────────────────────────────────────────────────────────
   const sectionHeading: React.CSSProperties = {
     fontSize: 'clamp(1.8rem, 3.5vw, 2.5rem)',
     fontWeight: 700, letterSpacing: '-0.03em',
@@ -126,7 +121,7 @@ export default function HomePage() {
         }
       `}</style>
 
-      {/* ── NAV ── */}
+      {/* NAV */}
       <header style={{ position: 'sticky', top: 0, zIndex: 50, background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(12px)', borderBottom: '1px solid #F3F4F6' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 28px', height: 56, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <a href="/" style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none' }}>
@@ -191,7 +186,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── FEATURES ── */}
+      {/*FEATURES */}
       <section id="features" style={{ background: '#F9FAFB', borderTop: '1px solid #F3F4F6', borderBottom: '1px solid #F3F4F6', padding: '80px 28px' }}>
         <div ref={featRef} style={{ maxWidth: 1100, margin: '0 auto' }}>
           <h2 style={sectionHeading}>Everything you need to build visually</h2>
@@ -213,7 +208,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── HOW IT WORKS ── */}
+      {/* HOW IT WORKS */}
       <section style={{ padding: '80px 28px', borderBottom: '1px solid #F3F4F6' }}>
         <div ref={stepsRef} style={{ maxWidth: 740, margin: '0 auto' }}>
           <h2 style={sectionHeading}>How it works</h2>
@@ -244,7 +239,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── BUILT FOR ── */}
+      {/* BUILT FOR  */}
       <section style={{ padding: '80px 28px' }}>
         <div ref={builtRef} style={{ maxWidth: 1100, margin: '0 auto' }}>
           <h2 style={{ ...sectionHeading, marginBottom: 48 }}>Built for</h2>
@@ -272,7 +267,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── FOOTER ── */}
+      {/* FOOTER  */}
       <footer style={{ borderTop: '1px solid #F3F4F6', padding: '20px 28px' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
           <a href="/" style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none' }}>
