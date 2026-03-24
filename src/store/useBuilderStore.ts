@@ -56,7 +56,7 @@ function commit(
 }
 
 
-interface Store {
+export interface Store {
   tree:        UIElement[]
   selectedId:  string | null
   viewMode:    ViewMode
