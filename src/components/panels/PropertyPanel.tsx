@@ -29,31 +29,16 @@ const ADDITIVE_GROUPS: GroupMap = {
   Animation: ['animate-spin','animate-ping','animate-pulse','animate-bounce'],
 }
 
-const ALL_GROUPS: GroupMap = { ...EXCLUSIVE_GROUPS, ...ADDITIVE_GROUPS }
+const ALL_GROUPS = { ...EXCLUSIVE_GROUPS, ...ADDITIVE_GROUPS }
 
 export default function PropertyPanel({ dark }: Props) {
   const el = useBuilderStore(s => s.getSelected())
   const update = useBuilderStore(s => s.updateElement)
   const remove = useBuilderStore(s => s.removeElement)
 
-  if (!el) {
-    return (
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '100%',
-        fontSize: 13,
-        color: dark ? '#64748B' : '#9CA3AF'
-      }}>
-        Select an element
-      </div>
-    )
-  }
-
   const classList = useMemo<string[]>(
-    () => (el.props.className ?? '').split(' ').filter(Boolean),
-    [el.props.className]
+    () => (el?.props.className ?? '').split(' ').filter(Boolean),
+    [el?.props.className]
   )
 
   const hasClass = (cls: string) => classList.includes(cls)
@@ -73,11 +58,11 @@ export default function PropertyPanel({ dark }: Props) {
         : [...classList, cls]
     }
 
-    update(el.id, { className: next.join(' ') })
+    if (el) update(el.id, { className: next.join(' ') })
   }
 
   const setProp = (key: string, value: string) => {
-    update(el.id, { [key]: value })
+    if (el) update(el.id, { [key]: value })
   }
 
   const textMut = dark ? '#64748B' : '#9CA3AF'
@@ -97,42 +82,48 @@ export default function PropertyPanel({ dark }: Props) {
     fontFamily: 'Inter, sans-serif',
   }
 
+  if (!el) {
+    return (
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100%',
+        fontSize: 13,
+        color: textMut
+      }}>
+        Select an element
+      </div>
+    )
+  }
+
   return (
     <div style={{ padding: 16, display: 'flex', flexDirection: 'column', gap: 14 }}>
-
-      <span style={{
-        fontSize: 11,
-        fontWeight: 600,
-        color: textPri
-      }}>
+      <span style={{ fontSize: 11, fontWeight: 600, color: textPri }}>
         {el.type}
       </span>
 
       {['heading','text','button'].includes(el.type) && (
-        <div>
-          <input
-            value={el.props.text ?? ''}
-            onChange={e => setProp('text', e.target.value)}
-            style={inputStyle}
-          />
-        </div>
-      )}
-
-      <div>
-        <textarea
-          value={el.props.className ?? ''}
-          onChange={e => setProp('className', e.target.value)}
-          rows={3}
+        <input
+          value={el.props.text ?? ''}
+          onChange={e => setProp('text', e.target.value)}
           style={inputStyle}
         />
-      </div>
+      )}
+
+      <textarea
+        value={el.props.className ?? ''}
+        onChange={e => setProp('className', e.target.value)}
+        rows={3}
+        style={inputStyle}
+      />
 
       {Object.entries(ALL_GROUPS).map(([label, chips]) => {
         const exclusive = label in EXCLUSIVE_GROUPS
 
         return (
           <div key={label}>
-            <div style={{ fontSize: 11, color: textMut, marginBottom: 4 }}>
+            <div style={{ fontSize: 11, color: textMut }}>
               {label} ({exclusive ? 'single' : 'multi'})
             </div>
 
