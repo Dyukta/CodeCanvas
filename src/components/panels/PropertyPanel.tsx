@@ -32,7 +32,23 @@ const ADDITIVE_GROUPS: GroupMap = {
 const ALL_GROUPS = { ...EXCLUSIVE_GROUPS, ...ADDITIVE_GROUPS }
 
 export default function PropertyPanel({ dark }: Props) {
-  const el = useBuilderStore(s => s.getSelected())
+ const selectedId = useBuilderStore(s => s.selectedId)
+const tree = useBuilderStore(s => s.tree)
+
+const el = useMemo(() => {
+  if (!selectedId) return null
+
+  const find = (nodes: any[]): any => {
+    for (const n of nodes) {
+      if (n.id === selectedId) return n
+      const found = find(n.children)
+      if (found) return found
+    }
+    return null
+  }
+
+  return find(tree)
+}, [tree, selectedId])
   const update = useBuilderStore(s => s.updateElement)
   const remove = useBuilderStore(s => s.removeElement)
 
