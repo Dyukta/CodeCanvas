@@ -141,7 +141,7 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* ── HERO ── */}
+      {/* HERO */}
       <section style={{ padding: '80px 28px 64px', textAlign: 'center' }}>
         <div style={{ maxWidth: 680, margin: '0 auto' }}>
 
@@ -174,10 +174,6 @@ export default function HomePage() {
               Learn More
             </a>
           </div>
-
-          <p className="a4" style={{ fontSize: 12, color: '#9CA3AF', marginTop: 16 }}>
-            Free · No account required · Open source
-          </p>
         </div>
 
         {/* builder preview */}
