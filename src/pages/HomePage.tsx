@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import {MousePointerClick, Code2, Layers, Eye,SlidersHorizontal, Monitor, Smartphone,Tablet, LayoutGrid, Bell,} from 'lucide-react'
+import {MousePointerClick, Code2, Layers, Eye,SlidersHorizontal, Monitor, Smartphone,Tablet, LayoutGrid} from 'lucide-react'
 import { useInView } from '../hooks/useInView'
 import BuilderPreview from '../components/BuilderPreview'
 
@@ -121,7 +121,7 @@ export default function HomePage() {
         }
       `}</style>
 
-      {/* NAV */}
+
       <header style={{ position: 'sticky', top: 0, zIndex: 50, background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(12px)', borderBottom: '1px solid #F3F4F6' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 28px', height: 56, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <a href="/" style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none' }}>
@@ -131,9 +131,6 @@ export default function HomePage() {
             <span style={{ fontWeight: 700, fontSize: 15, color: '#111827', letterSpacing: '-0.01em' }}>CodeCanvas</span>
           </a>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <button style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 6, color: '#9CA3AF', display: 'flex', alignItems: 'center' }}>
-              <Bell size={18} strokeWidth={1.8} />
-            </button>
             <button className="nav-btn" onClick={() => navigate('/builder')}>
               Open Builder
             </button>
