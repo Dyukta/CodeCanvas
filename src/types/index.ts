@@ -27,3 +27,22 @@ export interface UIElement {
   props: ElementProps
   children: UIElement[]
 }
+export interface UIStyles {
+  fontSize?: string
+  fontWeight?: string
+  textColor?: string
+  background?: string
+  rounded?: string
+  shadow?: string
+  width?: string
+  height?: string
+  opacity?: string
+  cursor?: string
+  overflow?: string
+
+  padding?: string[]
+  margin?: string[]
+  border?: string[]
+  layout?: string[]
+  animation?: string[]
+}
