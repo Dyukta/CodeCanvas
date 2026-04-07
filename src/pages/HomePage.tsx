@@ -138,31 +138,19 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* HERO */}
       <section style={{ padding: '80px 28px 64px', textAlign: 'center' }}>
         <div style={{ maxWidth: 680, margin: '0 auto' }}>
 
-          {/* badge */}
-          <div className="a0" style={{ marginBottom: 24 }}>
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 13, color: '#6B7280', border: '1px solid #E5E7EB', borderRadius: 20, padding: '4px 14px' }}>
-              <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#3B5BDB', display: 'inline-block' }} />
-              Visual UI Builder for React &amp; Tailwind
-            </span>
-          </div>
-
-          {/* headline */}
           <h1 className="a1" style={{ fontSize: 'clamp(2.8rem, 7vw, 4.5rem)', fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 1.05, marginBottom: 20 }}>
             <span style={{ color: '#0F172A', display: 'block' }}>Build interfaces.</span>
             <span style={{ color: '#3B5BDB', display: 'block' }}>See the code.</span>
           </h1>
 
-          {/* subtitle */}
           <p className="a2" style={{ fontSize: 17, color: '#6B7280', lineHeight: 1.7, maxWidth: 500, margin: '0 auto 32px' }}>
             A minimal, developer-focused tool to visually compose React layouts
             and instantly get clean Tailwind CSS code.
           </p>
 
-          {/* CTAs */}
           <div className="a3 hero-btns" style={{ display: 'flex', gap: 10, justifyContent: 'center', flexWrap: 'wrap' }}>
             <button className="btn-primary" onClick={() => navigate('/builder')}>
               Start Building →
@@ -173,13 +161,11 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* builder preview */}
         <div className="a4" style={{ maxWidth: 860, margin: '52px auto 0' }}>
           <BuilderPreview />
         </div>
       </section>
 
-      {/*FEATURES */}
       <section id="features" style={{ background: '#F9FAFB', borderTop: '1px solid #F3F4F6', borderBottom: '1px solid #F3F4F6', padding: '80px 28px' }}>
         <div ref={featRef} style={{ maxWidth: 1100, margin: '0 auto' }}>
           <h2 style={sectionHeading}>Everything you need to build visually</h2>
@@ -201,7 +187,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* HOW IT WORKS */}
       <section style={{ padding: '80px 28px', borderBottom: '1px solid #F3F4F6' }}>
         <div ref={stepsRef} style={{ maxWidth: 740, margin: '0 auto' }}>
           <h2 style={sectionHeading}>How it works</h2>
@@ -232,7 +217,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* BUILT FOR  */}
       <section style={{ padding: '80px 28px' }}>
         <div ref={builtRef} style={{ maxWidth: 1100, margin: '0 auto' }}>
           <h2 style={{ ...sectionHeading, marginBottom: 48 }}>Built for</h2>
@@ -260,7 +244,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* FOOTER  */}
       <footer style={{ borderTop: '1px solid #F3F4F6', padding: '20px 28px' }}>
         <div style={{ maxWidth: 1200, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
           <a href="/" style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none' }}>
